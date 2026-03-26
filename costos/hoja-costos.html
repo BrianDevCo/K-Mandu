@@ -69,7 +69,9 @@ input[type=number]:focus{outline:none;border-color:#FF8FAB}
 .pc2.prf .ps{color:#FFB5C8}
 .save-btn{background:#FF8FAB;color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
 .save-btn:hover{background:#FF6B8A}
+.save-btn:disabled{background:#ccc;cursor:not-allowed}
 .ok{font-size:12px;color:#4CAF50;margin-left:10px;display:none}
+.sync{font-size:12px;margin-left:10px;color:#9A7A6A}
 @media(max-width:600px){.grid{grid-template-columns:1fr}.rg{grid-template-columns:1fr 1fr}.pg{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -93,8 +95,8 @@ input[type=number]:focus{outline:none;border-color:#FF8FAB}
   <div class="sec">📦 Precios de Ingredientes</div>
   <p style="font-size:12px;color:#9A7A6A;margin-bottom:14px">Actualiza los precios cuando cambien en el mercado. Todo se recalcula automáticamente.</p>
   <div id="ing-table"></div>
-  <button class="save-btn" onclick="save()">💾 Guardar Precios</button>
-  <span class="ok" id="ok-msg">✅ Guardado</span>
+  <button class="save-btn" id="save-btn" onclick="save()">💾 Guardar Precios</button>
+  <span class="sync" id="sync-msg"></span>
 </div>
 
 <div id="tab-cos" class="content">
@@ -138,6 +140,9 @@ input[type=number]:focus{outline:none;border-color:#FF8FAB}
 </div>
 
 <script>
+// ← Reemplaza con tu URL de Apps Script después de desplegar
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVpV8HNSSXfLuqa83i8zWQTqv24VZNtSbvz4spsQ9CgZeBhkcISBeCyJuYAHtqDU_X/exec';
+
 const ING = [
   {id:'pollo',       n:'Pechuga de pollo',         u:'g',       p:14.43, c:'bp', cat:'Proteína',    note:'1000g → 700g usable (30% pérdida)'},
   {id:'res',         n:'Pulpa de res',              u:'g',       p:25.04, c:'bp', cat:'Proteína',    note:'740g → 700g usable (5% pérdida)'},
@@ -196,17 +201,44 @@ const PRODS = [
 
 let P = {};
 
-function load(){
-  const s = localStorage.getItem('kmandu_p');
-  ING.forEach(i => P[i.id] = s ? (JSON.parse(s)[i.id] ?? i.p) : i.p);
+function syncMsg(txt){ document.getElementById('sync-msg').textContent = txt; }
+
+async function load(){
+  syncMsg('⏳ Cargando precios...');
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const data = await res.json();
+    if(data.ok) ING.forEach(i => P[i.id] = data.prices[i.id] ?? i.p);
+    else throw new Error();
+    syncMsg('');
+  } catch(e) {
+    const s = localStorage.getItem('kmandu_p');
+    ING.forEach(i => P[i.id] = s ? (JSON.parse(s)[i.id] ?? i.p) : i.p);
+    syncMsg('⚠️ Sin conexión — precios locales');
+    setTimeout(()=>syncMsg(''), 3000);
+  }
 }
 
-function save(){
+async function save(){
   ING.forEach(i=>{ const el=document.getElementById('p_'+i.id); if(el) P[i.id]=parseFloat(el.value)||i.p; });
   localStorage.setItem('kmandu_p', JSON.stringify(P));
   renderCosts(); calcProd(); calcProj();
-  const m=document.getElementById('ok-msg'); m.style.display='inline';
-  setTimeout(()=>m.style.display='none',2000);
+
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  syncMsg('⏳ Guardando en Google Sheets...');
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'text/plain'},
+      body: JSON.stringify(P)
+    });
+    syncMsg('✅ Guardado en la nube');
+  } catch(e) {
+    syncMsg('⚠️ Guardado solo localmente');
+  }
+  btn.disabled = false;
+  setTimeout(()=>syncMsg(''), 3000);
 }
 
 function readP(){
@@ -374,7 +406,7 @@ function show(name){
   if(name==='pry'){ renderProjInputs(); calcProj(); }
 }
 
-load(); renderIng(); renderCosts();
+load().then(()=>{ renderIng(); renderCosts(); });
 </script>
 </body>
 </html>
