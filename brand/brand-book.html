@@ -661,9 +661,133 @@ html { scroll-behavior: smooth; }
   .toc-page { padding: 48px 24px; }
 }
 
+
+/* ─────────────────────────────────────────
+   NAV FLOTANTE
+───────────────────────────────────────── */
+#nav-toggle {
+  position: fixed;
+  top: 24px; right: 24px;
+  z-index: 1000;
+  width: 44px; height: 44px;
+  background: var(--negro);
+  border: 1px solid rgba(255,143,171,0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 5px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: background .2s;
+}
+#nav-toggle:hover { background: #2D1A0E; }
+#nav-toggle span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--rosa);
+  border-radius: 2px;
+  transition: .3s;
+}
+#nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#nav-toggle.open span:nth-child(2) { opacity: 0; }
+#nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+#nav-panel {
+  position: fixed;
+  top: 0; right: -320px;
+  width: 300px; height: 100vh;
+  background: var(--negro);
+  border-left: 1px solid rgba(255,143,171,0.15);
+  z-index: 999;
+  overflow-y: auto;
+  transition: right .35s cubic-bezier(.4,0,.2,1);
+  padding: 80px 0 32px;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.4);
+}
+#nav-panel.open { right: 0; }
+
+#nav-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s;
+}
+#nav-overlay.open { opacity: 1; pointer-events: all; }
+
+.nav-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--rosa); padding: 0 28px 16px;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 11px 28px;
+  cursor: pointer;
+  transition: background .15s;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+.nav-item:hover { background: rgba(255,143,171,0.07); }
+.nav-item.active {
+  background: rgba(255,143,171,0.1);
+  border-left-color: var(--rosa);
+}
+.nav-num {
+  font-size: 10px; font-weight: 700;
+  color: rgba(255,143,171,0.4);
+  min-width: 22px;
+  font-family: 'Montserrat', sans-serif;
+}
+.nav-item.active .nav-num { color: var(--rosa); }
+.nav-title {
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.3;
+}
+.nav-item.active .nav-title { color: white; font-weight: 600; }
+
+/* Progress bar top */
+#nav-progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; background: var(--rosa);
+  z-index: 1001; width: 0%;
+  transition: width .1s;
+}
 </style>
 </head>
 <body>
+
+<!-- BARRA DE PROGRESO -->
+<div id="nav-progress"></div>
+
+<!-- BOTÓN FLOTANTE -->
+<button id="nav-toggle" onclick="toggleNav()" aria-label="Menú">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- OVERLAY -->
+<div id="nav-overlay" onclick="toggleNav()"></div>
+
+<!-- PANEL LATERAL -->
+<nav id="nav-panel">
+  <div class="nav-label">Contenido</div>
+  <a class="nav-item" href="#s01" onclick="closeNav()"><span class="nav-num">01</span><span class="nav-title">Resumen Ejecutivo</span></a>
+  <a class="nav-item" href="#s02" onclick="closeNav()"><span class="nav-num">02</span><span class="nav-title">Concepto y Origen</span></a>
+  <a class="nav-item" href="#s03" onclick="closeNav()"><span class="nav-num">03</span><span class="nav-title">Misión, Visión y Valores</span></a>
+  <a class="nav-item" href="#s04" onclick="closeNav()"><span class="nav-num">04</span><span class="nav-title">Análisis de Mercado</span></a>
+  <a class="nav-item" href="#s05" onclick="closeNav()"><span class="nav-num">05</span><span class="nav-title">Público Objetivo</span></a>
+  <a class="nav-item" href="#s06" onclick="closeNav()"><span class="nav-num">06</span><span class="nav-title">Propuesta de Valor</span></a>
+  <a class="nav-item" href="#s07" onclick="closeNav()"><span class="nav-num">07</span><span class="nav-title">Identidad Visual</span></a>
+  <a class="nav-item" href="#s08" onclick="closeNav()"><span class="nav-num">08</span><span class="nav-title">Voz y Tono</span></a>
+  <a class="nav-item" href="#s09" onclick="closeNav()"><span class="nav-num">09</span><span class="nav-title">Portafolio de Productos</span></a>
+  <a class="nav-item" href="#s10" onclick="closeNav()"><span class="nav-num">10</span><span class="nav-title">Modelo de Negocio</span></a>
+  <a class="nav-item" href="#s11" onclick="closeNav()"><span class="nav-num">11</span><span class="nav-title">Estructura Financiera</span></a>
+  <a class="nav-item" href="#s12" onclick="closeNav()"><span class="nav-num">12</span><span class="nav-title">Plan de Lanzamiento</span></a>
+  <a class="nav-item" href="#s13" onclick="closeNav()"><span class="nav-num">13</span><span class="nav-title">Marco Legal</span></a>
+  <a class="nav-item" href="#s14" onclick="closeNav()"><span class="nav-num">14</span><span class="nav-title">Políticas Operativas</span></a>
+</nav>
 
 <!-- ══════════════════════════════════════════
      PORTADA
@@ -1701,5 +1825,42 @@ html { scroll-behavior: smooth; }
   <p style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:20px;letter-spacing:2px;font-family:'Montserrat',Arial,sans-serif">Brand Book v1.0 &nbsp;·&nbsp; Documento de uso interno &nbsp;·&nbsp; Confidencial</p>
 </div>
 
+<script>
+function toggleNav(){
+  document.getElementById('nav-toggle').classList.toggle('open');
+  document.getElementById('nav-panel').classList.toggle('open');
+  document.getElementById('nav-overlay').classList.toggle('open');
+}
+function closeNav(){
+  document.getElementById('nav-toggle').classList.remove('open');
+  document.getElementById('nav-panel').classList.remove('open');
+  document.getElementById('nav-overlay').classList.remove('open');
+}
+
+// Progreso de scroll
+window.addEventListener('scroll', function(){
+  const scrolled = window.scrollY;
+  const total = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('nav-progress').style.width = (scrolled / total * 100) + '%';
+});
+
+// Sección activa con IntersectionObserver
+const sections = document.querySelectorAll('.page[id]');
+const navItems = document.querySelectorAll('.nav-item');
+
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      const id = entry.target.getAttribute('id');
+      navItems.forEach(function(item){
+        const href = item.getAttribute('href');
+        item.classList.toggle('active', href === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.35 });
+
+sections.forEach(function(s){ observer.observe(s); });
+</script>
 </body>
 </html>
