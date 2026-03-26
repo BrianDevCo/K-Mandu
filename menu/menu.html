@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>K-Mandu · Menú</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', Arial, sans-serif;
+      background: #FFF8F5;
+      color: #1A0A00;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(160deg, #1A0A00 0%, #3D1F0E 100%);
+      padding: 40px 24px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #FF8FAB33, transparent 70%);
+      border-radius: 50%;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: -30px;
+      width: 130px; height: 130px;
+      background: radial-gradient(circle, #FFB5C833, transparent 70%);
+      border-radius: 50%;
+    }
+    .logo-icon {
+      font-size: 56px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .logo-name {
+      font-size: 38px;
+      font-weight: 900;
+      color: #FFF8F5;
+      letter-spacing: 3px;
+    }
+    .logo-tagline {
+      font-size: 12px;
+      color: #FF8FAB;
+      letter-spacing: 5px;
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+    .header-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: #FF8FAB22;
+      border: 1px solid #FF8FAB55;
+      color: #FFB5C8;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+
+    /* AVISO PEDIDOS */
+    .order-banner {
+      background: #FF8FAB;
+      padding: 14px 24px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1A0A00;
+      letter-spacing: 0.5px;
+    }
+    .order-banner a {
+      color: #1A0A00;
+      text-decoration: underline;
+    }
+
+    /* CONTENIDO */
+    .content { padding: 24px 16px 40px; max-width: 480px; margin: 0 auto; }
+
+    /* SECCIÓN */
+    .section { margin-bottom: 32px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #FFE8EE;
+    }
+    .section-emoji { font-size: 26px; }
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1A0A00;
+    }
+    .section-sub {
+      font-size: 11px;
+      color: #FF8FAB;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* TARJETA DE PRODUCTO */
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 12px #FFB5C820;
+      border: 1px solid #FFE8EE;
+      transition: transform 0.15s;
+    }
+    .product-card:active { transform: scale(0.98); }
+    .product-info { flex: 1; }
+    .product-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A0A00;
+      margin-bottom: 3px;
+    }
+    .product-desc {
+      font-size: 12px;
+      color: #9A7A6A;
+      line-height: 1.4;
+    }
+    .product-tag {
+      display: inline-block;
+      background: #FFE8EE;
+      color: #FF6B8A;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+    .product-price {
+      font-size: 17px;
+      font-weight: 900;
+      color: #FF6B8A;
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    .product-price .price-unit {
+      font-size: 10px;
+      color: #9A7A6A;
+      font-weight: 600;
+      display: block;
+      text-align: right;
+    }
+
+    /* CARD DESTACADA */
+    .product-card.featured {
+      background: linear-gradient(135deg, #1A0A00 0%, #3D1F0E 100%);
+      border-color: #FF8FAB44;
+    }
+    .product-card.featured .product-name { color: #FFF8F5; }
+    .product-card.featured .product-desc { color: #FFB5C8; }
+    .product-card.featured .product-price { color: #FF8FAB; }
+    .product-card.featured .price-unit { color: #FFB5C899; }
+    .product-card.featured .product-tag {
+      background: #FF8FAB22;
+      color: #FF8FAB;
+    }
+
+    /* COMBOS */
+    .combo-card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 12px #FFB5C820;
+      border: 1px solid #FFE8EE;
+    }
+    .combo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .combo-name {
+      font-size: 16px;
+      font-weight: 900;
+      color: #1A0A00;
+    }
+    .combo-price-block { text-align: right; }
+    .combo-price {
+      font-size: 20px;
+      font-weight: 900;
+      color: #FF6B8A;
+    }
+    .combo-save {
+      font-size: 11px;
+      color: #4CAF50;
+      font-weight: 700;
+    }
+    .combo-items {
+      font-size: 12px;
+      color: #9A7A6A;
+      line-height: 1.6;
+    }
+    .combo-divider { height: 1px; background: #FFE8EE; margin: 8px 0; }
+
+    /* COMBO FULL K */
+    .combo-card.full-k {
+      background: linear-gradient(135deg, #1A0A00 0%, #3D1F0E 100%);
+      border-color: #FF8FAB44;
+    }
+    .combo-card.full-k .combo-name { color: #FFF8F5; }
+    .combo-card.full-k .combo-items { color: #FFB5C8; }
+    .combo-card.full-k .combo-divider { background: #FF8FAB22; }
+
+    /* NOTA */
+    .note {
+      background: #FFE8EE;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #9A7A6A;
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* BOTÓN WHATSAPP */
+    .whatsapp-btn {
+      display: block;
+      background: #25D366;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 20px #25D36640;
+      margin-bottom: 12px;
+    }
+    .whatsapp-btn:active { opacity: 0.9; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      background: #1A0A00;
+      color: #FF8FAB;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+    .footer-name {
+      font-size: 18px;
+      font-weight: 900;
+      color: #FFF8F5;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+    }
+
+    /* SEPARADOR DECORATIVO */
+    .divider {
+      text-align: center;
+      color: #FFB5C8;
+      font-size: 14px;
+      letter-spacing: 8px;
+      margin: 8px 0 24px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="logo-icon">🥟</span>
+    <div class="logo-name">K-Mandu</div>
+    <div class="logo-tagline">Korean Bites · Cali</div>
+    <div class="header-badges">
+      <span class="badge">🏠 Hecho en casa</span>
+      <span class="badge">🛵 Domicilios Cali</span>
+      <span class="badge">🇰🇷 Receta coreana</span>
+    </div>
+  </div>
+
+  <!-- BANNER PEDIDOS -->
+  <div class="order-banner">
+    📲 Pedidos por WhatsApp · Domicilios en Cali
+  </div>
+
+  <div class="content">
+
+    <!-- MANDU -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-emoji">🥟</span>
+        <div>
+          <div class="section-title">Mandu</div>
+          <div class="section-sub">Porción de 6 dumplings · 250g – 300g</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">Mandu de Pollo</div>
+          <div class="product-desc">Pollo + pimentón + zanahoria + cebolla + ajo + jengibre</div>
+          <span class="product-tag">⭐ Más suave</span>
+        </div>
+        <div class="product-price">$16.500<span class="price-unit">x6 und · ~250g</span></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">Mandu de Carne</div>
+          <div class="product-desc">Pulpa de res + zanahoria + cebolla + pimentón + soya + sésamo</div>
+          <span class="product-tag">🥩 Jugoso</span>
+        </div>
+        <div class="product-price">$18.000<span class="price-unit">x6 und · ~250g</span></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">Mandu de Cerdo</div>
+          <div class="product-desc">Pulpa de cerdo + vegetales + sésamo · Sabor coreano auténtico</div>
+          <span class="product-tag">🇰🇷 El coreano</span>
+        </div>
+        <div class="product-price">$18.000<span class="price-unit">x6 und · ~250g</span></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">Mandu Mixto</div>
+          <div class="product-desc">Carne de res + cerdo · Lo mejor de dos mundos</div>
+          <span class="product-tag">🔀 Porción premium ~300g</span>
+        </div>
+        <div class="product-price">$22.000<span class="price-unit">x6 und · ~300g</span></div>
+      </div>
+
+      <div class="product-card featured">
+        <div class="product-info">
+          <div class="product-name">⭐ Super Mix</div>
+          <div class="product-desc">Pollo + Carne + Cerdo · Las tres proteínas juntas</div>
+          <span class="product-tag">🔥 Porción premium ~300g</span>
+        </div>
+        <div class="product-price">$23.000<span class="price-unit">x6 und · ~300g</span></div>
+      </div>
+    </div>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <!-- BOBA TEA -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-emoji">🧋</span>
+        <div>
+          <div class="section-title">Boba Tea</div>
+          <div class="section-sub">400ml · Con perlas de tapioca</div>
+        </div>
+      </div>
+
+      <div class="product-card featured">
+        <div class="product-info">
+          <div class="product-name">🖤 Brown Sugar Boba</div>
+          <div class="product-desc">Té negro + sirope de azúcar morena + leche + tapioca · El auténtico coreano</div>
+          <span class="product-tag">🇰🇷 Receta original</span>
+        </div>
+        <div class="product-price">$15.000<span class="price-unit">400ml</span></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">💜 Taro Milk Tea</div>
+          <div class="product-desc">Té de taro + leche + tapioca · Suave, cremoso y aesthetic</div>
+          <span class="product-tag">💜 El aesthetic</span>
+        </div>
+        <div class="product-price">$15.000<span class="price-unit">400ml</span></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">💛 Limonada Boba</div>
+          <div class="product-desc">Limonada natural + tapioca + menta · Refrescante y adictiva</div>
+          <span class="product-tag">🌿 Refrescante</span>
+        </div>
+        <div class="product-price">$10.000<span class="price-unit">400ml</span></div>
+      </div>
+    </div>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <!-- MOCHIS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-emoji">🍡</span>
+        <div>
+          <div class="section-title">Mochis</div>
+          <div class="section-sub">Hechos a mano · Harina de arroz</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">🍓 Fresa · 🟠 Maracuyá · 🍫 Chocolate</div>
+          <div class="product-desc">Masa de arroz glutinoso rellena · Suavecitos y tiernos</div>
+          <span class="product-tag">🍡 Postre coreano</span>
+        </div>
+        <div class="product-price">$4.000<span class="price-unit">x unidad</span></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-name">Combo Mochis x3</div>
+          <div class="product-desc">Elige 3 sabores · Puedes combinar</div>
+        </div>
+        <div class="product-price">$10.000<span class="price-unit">x3 und</span></div>
+      </div>
+    </div>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <!-- COMBOS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-emoji">📦</span>
+        <div>
+          <div class="section-title">Combos</div>
+          <div class="section-sub">¡La mejor opción!</div>
+        </div>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <div class="combo-name">📦 Combo Solo</div>
+          <div class="combo-price-block">
+            <div class="combo-price">$28.000</div>
+            <div class="combo-save">Ahorras hasta $3.500</div>
+          </div>
+        </div>
+        <div class="combo-divider"></div>
+        <div class="combo-items">🥟 6 Mandu (tu elección) &nbsp;·&nbsp; 🧋 1 Boba Tea (tu elección)</div>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <div class="combo-name">🍡 Combo Dulce</div>
+          <div class="combo-price-block">
+            <div class="combo-price">$24.000</div>
+            <div class="combo-save">Ahorras hasta $2.500</div>
+          </div>
+        </div>
+        <div class="combo-divider"></div>
+        <div class="combo-items">🥟 6 Mandu (tu elección) &nbsp;·&nbsp; 🍡 3 Mochis (tu elección)</div>
+      </div>
+
+      <div class="combo-card full-k">
+        <div class="combo-header">
+          <div class="combo-name">🌟 Combo Full K</div>
+          <div class="combo-price-block">
+            <div class="combo-price" style="color:#FF8FAB">$38.000</div>
+            <div class="combo-save">Ahorras hasta $3.500</div>
+          </div>
+        </div>
+        <div class="combo-divider"></div>
+        <div class="combo-items">🥟 6 Mandu &nbsp;·&nbsp; 🧋 1 Boba Tea &nbsp;·&nbsp; 🍡 3 Mochis</div>
+      </div>
+    </div>
+
+    <div class="note">
+      🛵 Hacemos domicilios en Cali<br/>
+      ⏱️ Tiempo de preparación: 30-45 min<br/>
+      💳 Efectivo · Nequi · Daviplata
+    </div>
+
+    <!-- BOTÓN PEDIR -->
+    <a class="whatsapp-btn" href="https://wa.me/57XXXXXXXXXX?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20K-Mandu%20🥟">
+      💬 Hacer Pedido por WhatsApp
+    </a>
+
+    <div style="text-align:center; font-size:12px; color:#9A7A6A; margin-top:8px;">
+      También puedes escribirnos directo al WhatsApp
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">K-Mandu</div>
+    Korean Bites · Cali · Colombia
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" width="1200" height="260">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#3D1A0A"/>
+      <stop offset="100%" stop-color="#1A0A00"/>
+    </radialGradient>
+    <radialGradient id="bg2" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#2A0F14"/>
+      <stop offset="100%" stop-color="#1A0A00"/>
+    </radialGradient>
+    <radialGradient id="bg3" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1A1A0A"/>
+      <stop offset="100%" stop-color="#1A0A00"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ========== HIGHLIGHT 1: MENÚ ========== -->
+  <g transform="translate(0,0)">
+    <circle cx="120" cy="120" r="110" fill="url(#bg1)"/>
+    <circle cx="120" cy="120" r="103" fill="none" stroke="#FF8FAB" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+
+    <!-- Dumpling icono mini -->
+    <path d="M72,118 Q78,96 120,90 Q162,96 168,118 Q165,134 120,140 Q75,134 72,118 Z" fill="#F4EFE4"/>
+    <path d="M72,118 Q76,108 82,113 Q86,104 92,110 Q97,101 104,108 Q109,100 116,107 Q121,99 128,106 Q134,100 140,107 Q145,101 151,108 Q156,104 160,110 Q164,108 168,118"
+          stroke="#C2B49A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <ellipse cx="107" cy="124" rx="7" ry="7.5" fill="#1A0A00"/>
+    <circle  cx="109" cy="121" r="2.5" fill="white"/>
+    <ellipse cx="133" cy="124" rx="7" ry="7.5" fill="#1A0A00"/>
+    <circle  cx="135" cy="121" r="2.5" fill="white"/>
+    <ellipse cx="97"  cy="131" rx="9"  ry="5" fill="#FF8FAB" opacity="0.35"/>
+    <ellipse cx="143" cy="131" rx="9"  ry="5" fill="#FF8FAB" opacity="0.35"/>
+    <path d="M112 136 Q120 142 128 136" stroke="#1A0A00" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <!-- vapor -->
+    <path d="M108 87 C106 79 109 74 107 66" stroke="#FF8FAB" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <path d="M120 84 C118 76 121 71 119 63" stroke="#FF8FAB" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <path d="M132 87 C130 79 133 74 131 66" stroke="#FF8FAB" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Label -->
+    <text x="120" y="170" text-anchor="middle" font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+          font-size="18" font-weight="900" fill="#FFF8F5" letter-spacing="2">MENÚ</text>
+    <line x1="75" y1="178" x2="165" y2="178" stroke="#FF8FAB" stroke-width="0.8" opacity="0.4"/>
+    <text x="120" y="194" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="11" fill="#FF8FAB" letter-spacing="3" opacity="0.7">K-MANDU</text>
+  </g>
+
+  <!-- ========== HIGHLIGHT 2: PEDIDOS ========== -->
+  <g transform="translate(240,0)">
+    <circle cx="120" cy="120" r="110" fill="url(#bg2)"/>
+    <circle cx="120" cy="120" r="103" fill="none" stroke="#FF8FAB" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+
+    <!-- Icono WhatsApp estilizado -->
+    <circle cx="120" cy="110" r="40" fill="none" stroke="#FF8FAB" stroke-width="2.5"/>
+    <circle cx="120" cy="110" r="40" fill="#FF8FAB" opacity="0.08"/>
+    <!-- Burbuja de chat -->
+    <path d="M98,95 Q98,88 105,88 L135,88 Q142,88 142,95 L142,118 Q142,125 135,125 L122,125 L116,133 L116,125 L105,125 Q98,125 98,118 Z"
+          fill="#FF8FAB" opacity="0.85"/>
+    <!-- Puntos de mensaje -->
+    <circle cx="112" cy="107" r="3.5" fill="#1A0A00"/>
+    <circle cx="120" cy="107" r="3.5" fill="#1A0A00"/>
+    <circle cx="128" cy="107" r="3.5" fill="#1A0A00"/>
+
+    <text x="120" y="170" text-anchor="middle" font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+          font-size="18" font-weight="900" fill="#FFF8F5" letter-spacing="2">PEDIDOS</text>
+    <line x1="75" y1="178" x2="165" y2="178" stroke="#FF8FAB" stroke-width="0.8" opacity="0.4"/>
+    <text x="120" y="194" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="11" fill="#FF8FAB" letter-spacing="3" opacity="0.7">WHATSAPP</text>
+  </g>
+
+  <!-- ========== HIGHLIGHT 3: BOBA TEA ========== -->
+  <g transform="translate(480,0)">
+    <circle cx="120" cy="120" r="110" fill="url(#bg1)"/>
+    <circle cx="120" cy="120" r="103" fill="none" stroke="#FF8FAB" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+
+    <!-- Vaso de boba -->
+    <path d="M96,70 L100,148 Q100,155 120,155 Q140,155 140,148 L144,70 Z" fill="#FF8FAB" opacity="0.15" stroke="#FF8FAB" stroke-width="1.5"/>
+    <!-- Tapa -->
+    <ellipse cx="120" cy="70" rx="24" ry="6" fill="#FF8FAB" opacity="0.5"/>
+    <!-- Popote -->
+    <line x1="124" y1="62" x2="124" y2="34" stroke="#FFF8F5" stroke-width="3" stroke-linecap="round"/>
+    <path d="M124 34 Q124 26 130 24" stroke="#FFF8F5" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Perlas en el fondo -->
+    <circle cx="108" cy="144" r="5" fill="#FF8FAB" opacity="0.7"/>
+    <circle cx="120" cy="147" r="5" fill="#FF8FAB" opacity="0.7"/>
+    <circle cx="132" cy="144" r="5" fill="#FF8FAB" opacity="0.7"/>
+    <circle cx="113" cy="136" r="4.5" fill="#FF8FAB" opacity="0.5"/>
+    <circle cx="127" cy="136" r="4.5" fill="#FF8FAB" opacity="0.5"/>
+    <!-- Gradiente leche -->
+    <path d="M101,108 L100,148 Q100,155 120,155 Q140,155 140,148 L139,108 Z"
+          fill="#FFF8F5" opacity="0.12"/>
+
+    <text x="120" y="170" text-anchor="middle" font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+          font-size="18" font-weight="900" fill="#FFF8F5" letter-spacing="2">BOBA TEA</text>
+    <line x1="75" y1="178" x2="165" y2="178" stroke="#FF8FAB" stroke-width="0.8" opacity="0.4"/>
+    <text x="120" y="194" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="11" fill="#FF8FAB" letter-spacing="3" opacity="0.7">K-MANDU</text>
+  </g>
+
+  <!-- ========== HIGHLIGHT 4: MOCHIS ========== -->
+  <g transform="translate(720,0)">
+    <circle cx="120" cy="120" r="110" fill="url(#bg3)"/>
+    <circle cx="120" cy="120" r="103" fill="none" stroke="#FF8FAB" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+
+    <!-- 3 mochis -->
+    <!-- Mochi izquierdo - fresa -->
+    <ellipse cx="93" cy="118" rx="28" ry="25" fill="#F4EFE4" opacity="0.95"/>
+    <ellipse cx="93" cy="118" rx="28" ry="25" fill="none" stroke="#C2B49A" stroke-width="1"/>
+    <path d="M80,117 Q93,130 106,117" stroke="#E8607A" stroke-width="1.2" fill="none" stroke-dasharray="3,2" opacity="0.5"/>
+    <circle cx="85" cy="107" r="3" fill="#E8607A" opacity="0.6"/>
+    <!-- Mochi centro - maracuyá -->
+    <ellipse cx="120" cy="108" rx="28" ry="25" fill="#F4EFE4" opacity="0.98"/>
+    <ellipse cx="120" cy="108" rx="28" ry="25" fill="none" stroke="#C2B49A" stroke-width="1"/>
+    <path d="M107,107 Q120,120 133,107" stroke="#F5A623" stroke-width="1.2" fill="none" stroke-dasharray="3,2" opacity="0.5"/>
+    <circle cx="112" cy="97"  r="3" fill="#F5A623" opacity="0.6"/>
+    <!-- Mochi derecho - chocolate -->
+    <ellipse cx="147" cy="118" rx="28" ry="25" fill="#E8D9C5" opacity="0.95"/>
+    <ellipse cx="147" cy="118" rx="28" ry="25" fill="none" stroke="#C2B49A" stroke-width="1"/>
+    <path d="M134,117 Q147,130 160,117" stroke="#7B3F00" stroke-width="1.2" fill="none" stroke-dasharray="3,2" opacity="0.5"/>
+    <circle cx="139" cy="107" r="3" fill="#7B3F00" opacity="0.6"/>
+
+    <text x="120" y="170" text-anchor="middle" font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+          font-size="18" font-weight="900" fill="#FFF8F5" letter-spacing="2">MOCHIS</text>
+    <line x1="75" y1="178" x2="165" y2="178" stroke="#FF8FAB" stroke-width="0.8" opacity="0.4"/>
+    <text x="120" y="194" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="11" fill="#FF8FAB" letter-spacing="3" opacity="0.7">K-MANDU</text>
+  </g>
+
+  <!-- ========== HIGHLIGHT 5: NOSOTROS ========== -->
+  <g transform="translate(960,0)">
+    <circle cx="120" cy="120" r="110" fill="url(#bg2)"/>
+    <circle cx="120" cy="120" r="103" fill="none" stroke="#FF8FAB" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+
+    <!-- Corazón coreano estilizado -->
+    <path d="M120,145 C90,125 72,105 72,90 C72,76 83,68 95,70 C105,72 112,80 120,88 C128,80 135,72 145,70 C157,68 168,76 168,90 C168,105 150,125 120,145 Z"
+          fill="#FF8FAB" opacity="0.75"/>
+    <!-- K dentro del corazón -->
+    <text x="120" y="115" text-anchor="middle"
+          font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+          font-size="30" font-weight="900" fill="#1A0A00" opacity="0.85">K</text>
+
+    <text x="120" y="170" text-anchor="middle" font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+          font-size="18" font-weight="900" fill="#FFF8F5" letter-spacing="2">NOSOTROS</text>
+    <line x1="75" y1="178" x2="165" y2="178" stroke="#FF8FAB" stroke-width="0.8" opacity="0.4"/>
+    <text x="120" y="194" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="11" fill="#FF8FAB" letter-spacing="3" opacity="0.7">K-MANDU</text>
+  </g>
+
+</svg>

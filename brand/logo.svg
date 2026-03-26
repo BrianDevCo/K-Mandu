@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 310" width="420" height="310">
+
+  <!-- FONDO -->
+  <rect width="420" height="310" fill="#FFF8F5" rx="24"/>
+
+  <!-- SOMBRA SUAVE DEBAJO DEL DUMPLING -->
+  <ellipse cx="210" cy="228" rx="85" ry="11" fill="#C4B4A4" opacity="0.22"/>
+
+  <!-- ===== CUERPO DEL DUMPLING (forma real: media luna con puntas) ===== -->
+  <path d="M115,180 Q210,230 305,180 Q292,112 210,106 Q128,112 115,180 Z" fill="#F4EFE4"/>
+
+  <!-- Brillo interior (volumen, parte superior izquierda) -->
+  <ellipse cx="176" cy="147" rx="42" ry="24" fill="white" opacity="0.42"/>
+
+  <!-- Sombra interior inferior (da profundidad) -->
+  <path d="M138,190 Q210,228 282,190 Q268,208 210,212 Q152,208 138,190 Z"
+        fill="#DDD0BB" opacity="0.32"/>
+
+  <!-- ===== PLIEGUES (el sello del mandu — la parte más reconocible) ===== -->
+
+  <!-- Área del pliegue — tono ligeramente más oscuro -->
+  <path d="M115,180
+           Q126,155 140,164
+           Q149,144 160,158
+           Q169,144 179,158
+           Q188,138 198,154
+           Q205,134 210,148
+           Q215,134 222,154
+           Q232,138 241,158
+           Q251,144 261,158
+           Q271,144 280,158
+           Q294,155 305,180
+           Q292,112 210,106 Q128,112 115,180 Z"
+        fill="#EAE0CE" opacity="0.55"/>
+
+  <!-- Línea de pliegue principal -->
+  <path d="M115,180
+           Q126,155 140,164
+           Q149,144 160,158
+           Q169,144 179,158
+           Q188,138 198,154
+           Q205,134 210,148
+           Q215,134 222,154
+           Q232,138 241,158
+           Q251,144 261,158
+           Q271,144 280,158
+           Q294,155 305,180"
+        stroke="#C2B49A" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Líneas de pliegue individuales (las costuras) -->
+  <line x1="140" y1="164" x2="143" y2="178" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="160" y1="158" x2="163" y2="174" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="179" y1="158" x2="182" y2="172" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="198" y1="154" x2="200" y2="168" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="210" y1="148" x2="210" y2="163" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="222" y1="154" x2="220" y2="168" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="241" y1="158" x2="238" y2="172" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="261" y1="158" x2="257" y2="174" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="280" y1="158" x2="277" y2="178" stroke="#C2B49A" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- ===== VAPOR ===== -->
+  <path d="M166 98 C161 80 169 68 164 52" stroke="#FFACC7" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M210 90 C205 72 213 60 208 44" stroke="#FFACC7" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M254 98 C249 80 257 68 252 52" stroke="#FFACC7" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- ===== CARA KAWAII ===== -->
+  <!-- Ojo izquierdo -->
+  <ellipse cx="186" cy="183" rx="8" ry="8.5" fill="#1A0A00"/>
+  <circle cx="188.5" cy="180" r="3" fill="white"/>
+  <circle cx="188" cy="179" r="1.2" fill="white" opacity="0.7"/>
+
+  <!-- Ojo derecho -->
+  <ellipse cx="234" cy="183" rx="8" ry="8.5" fill="#1A0A00"/>
+  <circle cx="236.5" cy="180" r="3" fill="white"/>
+  <circle cx="236" cy="179" r="1.2" fill="white" opacity="0.7"/>
+
+  <!-- Blush izquierdo -->
+  <ellipse cx="163" cy="197" rx="17" ry="9" fill="#FF8FAB" opacity="0.32"/>
+  <!-- Blush derecho -->
+  <ellipse cx="257" cy="197" rx="17" ry="9" fill="#FF8FAB" opacity="0.32"/>
+
+  <!-- Sonrisa -->
+  <path d="M192 200 Q210 216 228 200" stroke="#1A0A00" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- ===== DESTELLOS KAWAII ===== -->
+  <text x="108" y="128" font-size="13" fill="#FFB5C8" opacity="0.72">✦</text>
+  <text x="298" y="130" font-size="10" fill="#FFACC7" opacity="0.62">✦</text>
+  <text x="122" y="215" font-size="8"  fill="#FFB5C8" opacity="0.52">✦</text>
+  <text x="289" y="217" font-size="8"  fill="#FFB5C8" opacity="0.52">✦</text>
+
+  <!-- ===== NOMBRE ===== -->
+  <text x="210" y="265"
+        text-anchor="middle"
+        font-family="'Arial Rounded MT Bold', 'Nunito', 'Trebuchet MS', Arial, sans-serif"
+        font-size="42" font-weight="900" fill="#1A0A00" letter-spacing="3">K-Mandu</text>
+
+  <!-- ===== TAGLINE ===== -->
+  <text x="210" y="287"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="11" fill="#FF8FAB" letter-spacing="6">KOREAN BITES · CALI</text>
+
+</svg>

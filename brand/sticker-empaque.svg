@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+
+  <!-- FONDO STICKER (forma de etiqueta) -->
+  <rect width="320" height="200" fill="#1A0A00" rx="20"/>
+  <rect x="4" y="4" width="312" height="192" fill="none" stroke="#FF8FAB" stroke-width="1.5" rx="17" stroke-dasharray="6,4" opacity="0.5"/>
+
+  <!-- DETALLES DECORATIVOS ESQUINAS -->
+  <text x="16" y="30" font-size="11" fill="#FF8FAB" opacity="0.4">✦</text>
+  <text x="295" y="30" font-size="11" fill="#FF8FAB" opacity="0.4">✦</text>
+  <text x="16" y="188" font-size="11" fill="#FF8FAB" opacity="0.4">✦</text>
+  <text x="295" y="188" font-size="11" fill="#FF8FAB" opacity="0.4">✦</text>
+
+  <!-- DUMPLING ICON PEQUEÑO -->
+  <!-- Cuerpo -->
+  <path d="M128,80 Q160,100 192,80 Q186,52 160,48 Q134,52 128,80 Z" fill="#F4EFE4" opacity="0.95"/>
+  <!-- Pliegues -->
+  <path d="M128,80 Q133,68 139,72 Q144,60 150,68 Q155,58 160,64 Q165,58 170,68 Q176,60 181,72 Q187,68 192,80"
+        stroke="#C2B49A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Brillo -->
+  <ellipse cx="148" cy="62" rx="10" ry="6" fill="white" opacity="0.3"/>
+  <!-- Ojos kawaii -->
+  <ellipse cx="153" cy="78" rx="4" ry="4.5" fill="#1A0A00"/>
+  <circle cx="154.5" cy="76" r="1.5" fill="white"/>
+  <ellipse cx="167" cy="78" rx="4" ry="4.5" fill="#1A0A00"/>
+  <circle cx="168.5" cy="76" r="1.5" fill="white"/>
+  <!-- Blush -->
+  <ellipse cx="145" cy="84" rx="7" ry="4" fill="#FF8FAB" opacity="0.35"/>
+  <ellipse cx="175" cy="84" rx="7" ry="4" fill="#FF8FAB" opacity="0.35"/>
+  <!-- Sonrisa -->
+  <path d="M155 88 Q160 93 165 88" stroke="#1A0A00" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Vapor -->
+  <path d="M148 45 C146 36 150 30 148 22" stroke="#FF8FAB" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M160 42 C158 33 162 27 160 19" stroke="#FF8FAB" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M172 45 C170 36 174 30 172 22" stroke="#FF8FAB" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- NOMBRE -->
+  <text x="160" y="128"
+        text-anchor="middle"
+        font-family="'Arial Rounded MT Bold', Arial, sans-serif"
+        font-size="28" font-weight="900" fill="#FFF8F5" letter-spacing="3">K-Mandu</text>
+
+  <!-- TAGLINE -->
+  <text x="160" y="147"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="9" fill="#FF8FAB" letter-spacing="5">KOREAN BITES · CALI</text>
+
+  <!-- LÍNEA DIVISORA -->
+  <line x1="60" y1="158" x2="260" y2="158" stroke="#FF8FAB" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- ESPACIO PARA PRODUCTO (se escribe a mano o se imprime) -->
+  <text x="160" y="175"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="10" fill="#9A7A6A" letter-spacing="2">________________________</text>
+
+  <text x="160" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="8" fill="#FF8FAB" letter-spacing="3" opacity="0.6">SABOR / FLAVOR</text>
+
+</svg>

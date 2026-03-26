@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>K-Mandu · Hoja de Costos</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#FFF8F5;color:#1A0A00;font-size:14px}
+.header{background:#1A0A00;padding:20px 24px;display:flex;align-items:center;gap:12px}
+.header h1{color:#FFF8F5;font-size:20px;font-weight:900;letter-spacing:2px}
+.header p{color:#FF8FAB;font-size:11px;letter-spacing:3px;margin-top:3px}
+.tabs{display:flex;background:white;border-bottom:2px solid #FFE8EE;overflow-x:auto}
+.tab{padding:14px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;color:#9A7A6A;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.2s}
+.tab.active{color:#FF6B8A;border-bottom-color:#FF6B8A}
+.content{display:none;padding:20px 16px;max-width:960px;margin:0 auto}
+.content.active{display:block}
+table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px #FFB5C820;margin-bottom:20px}
+th{background:#1A0A00;color:#FFF8F5;padding:11px 14px;font-size:11px;text-align:left;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+th.sub{background:#2D1F14}
+td{padding:10px 14px;border-bottom:1px solid #FFE8EE}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#FFF5F8}
+input[type=number]{border:1px solid #FFE8EE;border-radius:6px;padding:6px 8px;font-size:13px;width:100px;background:#FFF8F5;color:#1A0A00}
+input[type=number]:focus{outline:none;border-color:#FF8FAB}
+.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:700}
+.bp{background:#FFE8EE;color:#FF6B8A}
+.bv{background:#E8F5E9;color:#388E3C}
+.bc{background:#E0F7FA;color:#00695C}
+.bm{background:#FFF3E0;color:#E65100}
+.bb{background:#EDE7F6;color:#5E35B1}
+.bmo{background:#FCE4EC;color:#C62828}
+.bpk{background:#E8EAF6;color:#283593}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-bottom:20px}
+.card{background:white;border-radius:12px;padding:16px;box-shadow:0 2px 12px #FFB5C820;border:1px solid #FFE8EE}
+.card.dark{background:#1A0A00;border-color:#FF8FAB33}
+.card .name{font-size:14px;font-weight:700;margin-bottom:10px}
+.card.dark .name{color:#FFF8F5}
+.card .row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px}
+.card .lbl{color:#9A7A6A}
+.card.dark .lbl{color:#FFB5C8}
+.card .val{font-weight:700}
+.card.dark .val{color:#FFF8F5}
+.card .margin{font-size:22px;font-weight:900;color:#4CAF50;text-align:right;margin-top:8px}
+.card .price-tag{background:#FF8FAB;color:white;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:700}
+.sec{font-size:16px;font-weight:900;margin:16px 0 10px;display:flex;align-items:center;gap:6px}
+.calc-block{background:white;border-radius:12px;padding:18px;box-shadow:0 2px 12px #FFB5C820;margin-bottom:14px}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #FFE8EE}
+.calc-row:last-child{border-bottom:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:16px 0}
+.rc{background:#1A0A00;border-radius:10px;padding:14px;text-align:center}
+.rc.green{background:linear-gradient(135deg,#1A3A0A,#2A5A18)}
+.rc .rl{font-size:10px;color:#FF8FAB;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
+.rc .rv{font-size:22px;font-weight:900;color:#FFF8F5}
+.shop-item{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #FFE8EE;font-size:13px}
+.shop-item:last-child{border-bottom:none}
+.shop-total{background:#FFE8EE;border-radius:8px;padding:11px 14px;margin-top:10px;display:flex;justify-content:space-between;font-weight:700}
+.proj-block{background:white;border-radius:12px;padding:18px;box-shadow:0 2px 12px #FFB5C820;margin-bottom:14px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:16px}
+.pc2{border-radius:10px;padding:16px;text-align:center}
+.pc2.rev{background:#E8F5E9}
+.pc2.cst{background:#FFE8EE}
+.pc2.prf{background:#1A0A00}
+.pc2.ord{background:#EDE7F6}
+.pc2 .pl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:6px}
+.pc2.prf .pl{color:#FF8FAB}
+.pc2 .pv{font-size:20px;font-weight:900}
+.pc2.prf .pv{color:#FFF8F5}
+.pc2 .ps{font-size:11px;color:#888;margin-top:3px}
+.pc2.prf .ps{color:#FFB5C8}
+.save-btn{background:#FF8FAB;color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
+.save-btn:hover{background:#FF6B8A}
+.ok{font-size:12px;color:#4CAF50;margin-left:10px;display:none}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.rg{grid-template-columns:1fr 1fr}.pg{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🥟 K-Mandu · Hoja de Costos</h1>
+    <p>CONTROL FINANCIERO · TIEMPO REAL</p>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active"   onclick="show('ing')">📦 Ingredientes</div>
+  <div class="tab"          onclick="show('cos')">💰 Costos</div>
+  <div class="tab"          onclick="show('pro')">🏭 Calculadora</div>
+  <div class="tab"          onclick="show('pry')">📈 Proyección</div>
+</div>
+
+<div id="tab-ing" class="content active">
+  <div class="sec">📦 Precios de Ingredientes</div>
+  <p style="font-size:12px;color:#9A7A6A;margin-bottom:14px">Actualiza los precios cuando cambien en el mercado. Todo se recalcula automáticamente.</p>
+  <div id="ing-table"></div>
+  <button class="save-btn" onclick="save()">💾 Guardar Precios</button>
+  <span class="ok" id="ok-msg">✅ Guardado</span>
+</div>
+
+<div id="tab-cos" class="content">
+  <div id="cos-content"></div>
+</div>
+
+<div id="tab-pro" class="content">
+  <div class="sec">🏭 Calculadora de Producción</div>
+  <p style="font-size:12px;color:#9A7A6A;margin-bottom:14px">Ingresa cuánto vas a producir hoy. El sistema calcula costos, ganancias y lista de compras exacta.</p>
+  <div class="calc-block"><div style="font-weight:700;margin-bottom:10px">🥟 Mandu <small style="color:#9A7A6A;font-weight:400">(porciones x6)</small></div><div id="calc-mandu"></div></div>
+  <div class="calc-block"><div style="font-weight:700;margin-bottom:10px">🧋 Boba Tea <small style="color:#9A7A6A;font-weight:400">(vasos)</small></div><div id="calc-boba"></div></div>
+  <div class="calc-block"><div style="font-weight:700;margin-bottom:10px">🍡 Mochis <small style="color:#9A7A6A;font-weight:400">(unidades)</small></div><div id="calc-mochi"></div></div>
+  <div class="rg">
+    <div class="rc"><div class="rl">Costo Total</div><div class="rv" id="r-cost">$0</div></div>
+    <div class="rc"><div class="rl">Ingresos</div><div class="rv" id="r-rev">$0</div></div>
+    <div class="rc green"><div class="rl">Ganancia</div><div class="rv" id="r-profit">$0</div></div>
+    <div class="rc"><div class="rl">Margen</div><div class="rv" id="r-margin">0%</div></div>
+  </div>
+  <div class="calc-block">
+    <div style="font-weight:700;margin-bottom:10px">🛒 Lista de Compras</div>
+    <div id="shop-list"><p style="color:#9A7A6A;font-size:13px">Ingresa cantidades arriba.</p></div>
+  </div>
+</div>
+
+<div id="tab-pry" class="content">
+  <div class="sec">📈 Proyección Mensual</div>
+  <p style="font-size:12px;color:#9A7A6A;margin-bottom:14px">Ingresa ventas estimadas por semana para ver tu P&L mensual.</p>
+  <div class="proj-block">
+    <div style="font-weight:700;margin-bottom:12px">Ventas por semana (unidades)</div>
+    <div id="proj-inputs"></div>
+  </div>
+  <div class="pg">
+    <div class="pc2 ord"><div class="pl">Pedidos/semana</div><div class="pv" id="p-ord-w">0</div></div>
+    <div class="pc2 ord"><div class="pl">Pedidos/mes</div><div class="pv" id="p-ord-m">0</div></div>
+    <div class="pc2 rev"><div class="pl">Ingresos/semana</div><div class="pv" id="p-rev-w">$0</div></div>
+    <div class="pc2 rev"><div class="pl">Ingresos/mes</div><div class="pv" id="p-rev-m">$0</div></div>
+    <div class="pc2 cst"><div class="pl">Costos/mes</div><div class="pv" id="p-cos-m">$0</div></div>
+    <div class="pc2 prf"><div class="pl">Ganancia/mes</div><div class="pv" id="p-prf-m">$0</div><div class="ps" id="p-pp">Por persona: $0</div></div>
+  </div>
+  <div class="proj-block"><div style="font-weight:700;margin-bottom:10px">Desglose por producto</div><div id="p-breakdown"><p style="color:#9A7A6A;font-size:13px">Ingresa datos arriba.</p></div></div>
+</div>
+
+<script>
+const ING = [
+  {id:'pollo',       n:'Pechuga de pollo',         u:'g',       p:14.43, c:'bp', cat:'Proteína',    note:'1000g → 700g usable (30% pérdida)'},
+  {id:'res',         n:'Pulpa de res',              u:'g',       p:25.04, c:'bp', cat:'Proteína',    note:'740g → 700g usable (5% pérdida)'},
+  {id:'cerdo',       n:'Pulpa de cerdo',            u:'g',       p:20.05, c:'bp', cat:'Proteína',    note:'740g → 700g usable (5% pérdida)'},
+  {id:'pimenton',    n:'Pimentón',                  u:'g',       p:8.50,  c:'bv', cat:'Vegetal',     note:'$8.500/kg'},
+  {id:'zanahoria',   n:'Zanahoria',                 u:'g',       p:2.20,  c:'bv', cat:'Vegetal',     note:'$2.200/kg'},
+  {id:'cebolla',     n:'Cebolla',                   u:'g',       p:4.60,  c:'bv', cat:'Vegetal',     note:'$4.600/kg'},
+  {id:'ajo',         n:'Ajo',                       u:'g',       p:12.375,c:'bv', cat:'Vegetal',     note:'$990 los 80g'},
+  {id:'jengibre',    n:'Jengibre',                  u:'g',       p:12.80, c:'bv', cat:'Vegetal',     note:'$12.800/kg'},
+  {id:'soya',        n:'Salsa soya',                u:'ml',      p:33.33, c:'bc', cat:'Condimento',  note:'$5.000/150ml'},
+  {id:'sesamo',      n:'Aceite de sésamo',          u:'ml',      p:100,   c:'bc', cat:'Condimento',  note:'$15.000/150ml'},
+  {id:'harina',      n:'Harina de trigo',           u:'g',       p:3.00,  c:'bm', cat:'Masa',        note:'$3.000/kg'},
+  {id:'te_negro',    n:'Té negro (bolsita)',         u:'bolsita', p:240,   c:'bb', cat:'Boba Tea',    note:'$6.000/25 und'},
+  {id:'taro',        n:'Taro en polvo',             u:'g',       p:46,    c:'bb', cat:'Boba Tea',    note:'$23.000/500g — MercadoLibre'},
+  {id:'tapioca',     n:'Perlas de tapioca',         u:'g',       p:23,    c:'bb', cat:'Boba Tea',    note:'$11.500/500g — MercadoLibre'},
+  {id:'leche',       n:'Leche entera',              u:'ml',      p:3.50,  c:'bb', cat:'Boba Tea',    note:'$3.500/L'},
+  {id:'azucar',      n:'Azúcar blanca',             u:'g',       p:3.00,  c:'bb', cat:'Boba Tea',    note:'$3.000/kg'},
+  {id:'azucar_m',    n:'Azúcar morena (sirope)',    u:'g',       p:6.00,  c:'bb', cat:'Boba Tea',    note:'$6.000/kg — hacer casero'},
+  {id:'limon',       n:'Limón',                     u:'g',       p:2.75,  c:'bb', cat:'Boba Tea',    note:'$2.750/kg'},
+  {id:'h_arroz',     n:'Harina arroz glutinoso',    u:'g',       p:32,    c:'bmo',cat:'Mochi',       note:'$16.000/500g — MercadoLibre'},
+  {id:'maicena',     n:'Maicena (anticake)',         u:'g',       p:6.00,  c:'bmo',cat:'Mochi',       note:'$3.000/500g'},
+  {id:'m_fresa',     n:'Mermelada fresa',           u:'g',       p:20,    c:'bmo',cat:'Mochi',       note:'$8.000/400g'},
+  {id:'p_maracuya',  n:'Pulpa maracuyá',            u:'g',       p:20,    c:'bmo',cat:'Mochi',       note:'$5.000/250g'},
+  {id:'p_choco',     n:'Pasta chocolate',           u:'g',       p:37.5,  c:'bmo',cat:'Mochi',       note:'$15.000/400g'},
+  {id:'caja',        n:'Caja/empaque mandu',        u:'und',     p:500,   c:'bpk',cat:'Empaque',     note:'Por porción'},
+  {id:'vaso',        n:'Vaso+tapa+pitillo boba',    u:'und',     p:600,   c:'bpk',cat:'Empaque',     note:'Por vaso'},
+  {id:'bolsa_m',     n:'Bolsa mochi',               u:'und',     p:300,   c:'bpk',cat:'Empaque',     note:'Por unidad'},
+  {id:'gas',         n:'Gas / energía',             u:'porción', p:250,   c:'bpk',cat:'Empaque',     note:'Estimado por porción'},
+];
+
+// Recipes: mandu = batch of 7 portions | boba & mochi = 1 unit
+const PRODS = [
+  {id:'mp', n:'Mandu Pollo',     e:'🥟', t:'mandu', b:7, price:16500,
+   r:[{i:'pollo',q:1000},{i:'pimenton',q:90},{i:'zanahoria',q:140},{i:'cebolla',q:130},{i:'ajo',q:25},{i:'jengibre',q:15},{i:'soya',q:5},{i:'sesamo',q:3},{i:'harina',q:700},{i:'caja',q:7},{i:'gas',q:7}]},
+  {id:'mc', n:'Mandu Carne',     e:'🥩', t:'mandu', b:7, price:18000,
+   r:[{i:'res',q:695},{i:'pimenton',q:99},{i:'zanahoria',q:154},{i:'cebolla',q:143},{i:'ajo',q:27},{i:'jengibre',q:17},{i:'soya',q:5},{i:'sesamo',q:3},{i:'harina',q:700},{i:'caja',q:7},{i:'gas',q:7}]},
+  {id:'mce', n:'Mandu Cerdo',    e:'🐷', t:'mandu', b:7, price:18000,
+   r:[{i:'cerdo',q:740},{i:'pimenton',q:90},{i:'zanahoria',q:140},{i:'cebolla',q:130},{i:'ajo',q:25},{i:'jengibre',q:15},{i:'soya',q:5},{i:'sesamo',q:3},{i:'harina',q:700},{i:'caja',q:7},{i:'gas',q:7}]},
+  {id:'mm', n:'Mandu Mixto',     e:'🔀', t:'mandu', b:7, price:22000,
+   r:[{i:'res',q:368},{i:'cerdo',q:368},{i:'pimenton',q:90},{i:'zanahoria',q:140},{i:'cebolla',q:130},{i:'ajo',q:25},{i:'jengibre',q:15},{i:'soya',q:5},{i:'sesamo',q:3},{i:'harina',q:700},{i:'caja',q:7},{i:'gas',q:7}]},
+  {id:'ms', n:'Super Mix',       e:'⭐', t:'mandu', b:7, price:23000,
+   r:[{i:'pollo',q:333},{i:'res',q:245},{i:'cerdo',q:245},{i:'pimenton',q:90},{i:'zanahoria',q:140},{i:'cebolla',q:130},{i:'ajo',q:25},{i:'jengibre',q:15},{i:'soya',q:5},{i:'sesamo',q:3},{i:'harina',q:700},{i:'caja',q:7},{i:'gas',q:7}]},
+  {id:'bb', n:'Brown Sugar Boba',e:'🖤', t:'boba',  b:1, price:15000,
+   r:[{i:'te_negro',q:1},{i:'leche',q:100},{i:'tapioca',q:40},{i:'azucar_m',q:30},{i:'vaso',q:1},{i:'gas',q:1}]},
+  {id:'bt', n:'Taro Milk Tea',   e:'💜', t:'boba',  b:1, price:15000,
+   r:[{i:'taro',q:25},{i:'leche',q:150},{i:'tapioca',q:40},{i:'azucar',q:15},{i:'vaso',q:1},{i:'gas',q:1}]},
+  {id:'bl', n:'Limonada Boba',   e:'💛', t:'boba',  b:1, price:10000,
+   r:[{i:'limon',q:100},{i:'tapioca',q:40},{i:'azucar',q:20},{i:'vaso',q:1},{i:'gas',q:1}]},
+  {id:'mof', n:'Mochi Fresa',    e:'🍓', t:'mochi', b:1, price:4000,
+   r:[{i:'h_arroz',q:30},{i:'maicena',q:5},{i:'azucar',q:15},{i:'m_fresa',q:15},{i:'bolsa_m',q:1}]},
+  {id:'mom', n:'Mochi Maracuyá', e:'🟠', t:'mochi', b:1, price:4000,
+   r:[{i:'h_arroz',q:30},{i:'maicena',q:5},{i:'azucar',q:15},{i:'p_maracuya',q:15},{i:'bolsa_m',q:1}]},
+  {id:'moc', n:'Mochi Chocolate',e:'🍫', t:'mochi', b:1, price:4000,
+   r:[{i:'h_arroz',q:30},{i:'maicena',q:5},{i:'azucar',q:15},{i:'p_choco',q:15},{i:'bolsa_m',q:1}]},
+];
+
+let P = {};
+
+function load(){
+  const s = localStorage.getItem('kmandu_p');
+  ING.forEach(i => P[i.id] = s ? (JSON.parse(s)[i.id] ?? i.p) : i.p);
+}
+
+function save(){
+  ING.forEach(i=>{ const el=document.getElementById('p_'+i.id); if(el) P[i.id]=parseFloat(el.value)||i.p; });
+  localStorage.setItem('kmandu_p', JSON.stringify(P));
+  renderCosts(); calcProd(); calcProj();
+  const m=document.getElementById('ok-msg'); m.style.display='inline';
+  setTimeout(()=>m.style.display='none',2000);
+}
+
+function readP(){
+  ING.forEach(i=>{ const el=document.getElementById('p_'+i.id); if(el) P[i.id]=parseFloat(el.value)||i.p; });
+}
+
+function batchCost(prod){
+  return prod.r.reduce((s,r)=>s+(P[r.i]||0)*r.q, 0);
+}
+function portionCost(prod){ return batchCost(prod)/prod.b; }
+function fmt(n){ return '$'+Math.round(n).toLocaleString('es-CO'); }
+
+// TAB 1
+function renderIng(){
+  const cats=[...new Set(ING.map(i=>i.cat))];
+  let h='';
+  cats.forEach(cat=>{
+    const items=ING.filter(i=>i.cat===cat);
+    h+=`<table><thead><tr><th colspan="4">${items[0].cat}</th></tr>
+    <tr class="sub"><th>Ingrediente</th><th>Unidad</th><th>Precio por unidad</th><th>Referencia</th></tr></thead><tbody>`;
+    items.forEach(i=>{
+      h+=`<tr><td><b>${i.n}</b></td><td>por ${i.u}</td>
+      <td><input type="number" id="p_${i.id}" value="${P[i.id]}" step="0.01" min="0" onchange="onChg()"/> COP</td>
+      <td style="font-size:11px;color:#9A7A6A">${i.note}</td></tr>`;
+    });
+    h+=`</tbody></table>`;
+  });
+  document.getElementById('ing-table').innerHTML=h;
+}
+
+function onChg(){ readP(); renderCosts(); calcProd(); calcProj(); }
+
+// TAB 2
+function renderCosts(){
+  const types=['mandu','boba','mochi'];
+  const tl={mandu:'🥟 Mandu — porción x6 dumplings',boba:'🧋 Boba Tea — vaso 400ml',mochi:'🍡 Mochis — por unidad'};
+  let h='';
+  types.forEach(t=>{
+    h+=`<div class="sec">${tl[t]}</div><div class="grid">`;
+    PRODS.filter(p=>p.t===t).forEach(prod=>{
+      const c=portionCost(prod);
+      const mg=((prod.price-c)/prod.price*100).toFixed(1);
+      const dark=(prod.id==='ms'||prod.id==='bb');
+      h+=`<div class="card ${dark?'dark':''}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div class="name">${prod.e} ${prod.n}</div>
+          <div class="price-tag">${fmt(prod.price)}</div>
+        </div>
+        <div style="height:1px;background:${dark?'#FF8FAB22':'#FFE8EE'};margin-bottom:10px"></div>
+        <div class="row"><span class="lbl">Costo producción</span><span class="val">${fmt(c)}</span></div>
+        <div class="row"><span class="lbl">Ganancia / unidad</span><span class="val" style="color:#4CAF50">${fmt(prod.price-c)}</span></div>
+        <div class="margin">${mg}%</div>
+      </div>`;
+    });
+    h+=`</div>`;
+  });
+  document.getElementById('cos-content').innerHTML=h;
+}
+
+// TAB 3
+function renderCalcInputs(){
+  ['mandu','boba','mochi'].forEach(t=>{
+    let h='';
+    PRODS.filter(p=>p.t===t).forEach(prod=>{
+      const u=t==='mandu'?'porciones':t==='boba'?'vasos':'unidades';
+      h+=`<div class="calc-row">
+        <span>${prod.e} ${prod.n}</span>
+        <span style="display:flex;align-items:center;gap:8px">
+          <input type="number" id="q_${prod.id}" value="0" min="0" style="width:65px;text-align:center" onchange="calcProd()"/>
+          <span style="font-size:12px;color:#9A7A6A">${u}</span>
+        </span>
+      </div>`;
+    });
+    document.getElementById('calc-'+t).innerHTML=h;
+  });
+}
+
+function calcProd(){
+  readP();
+  let cost=0,rev=0;
+  const totals={};
+  PRODS.forEach(prod=>{
+    const q=parseInt(document.getElementById('q_'+prod.id)?.value)||0;
+    if(!q) return;
+    cost+=portionCost(prod)*q;
+    rev+=prod.price*q;
+    prod.r.forEach(r=>{
+      const amt=(r.q/prod.b)*q;
+      totals[r.i]=(totals[r.i]||0)+amt;
+    });
+  });
+  const profit=rev-cost;
+  const mg=rev>0?(profit/rev*100).toFixed(1):0;
+  document.getElementById('r-cost').textContent=fmt(cost);
+  document.getElementById('r-rev').textContent=fmt(rev);
+  document.getElementById('r-profit').textContent=fmt(profit);
+  document.getElementById('r-margin').textContent=mg+'%';
+
+  const keys=Object.keys(totals).filter(k=>totals[k]>0);
+  if(!keys.length){ document.getElementById('shop-list').innerHTML='<p style="color:#9A7A6A;font-size:13px">Ingresa cantidades arriba.</p>'; return; }
+  let sh='',st=0;
+  keys.forEach(k=>{
+    const ing=ING.find(i=>i.id===k); if(!ing) return;
+    const amt=Math.ceil(totals[k]);
+    const c=amt*(P[k]||0);
+    st+=c;
+    sh+=`<div class="shop-item"><span><b>${ing.n}</b> — ${amt} ${ing.u}</span><span style="font-weight:700">${fmt(c)}</span></div>`;
+  });
+  sh+=`<div class="shop-total"><span>💰 Total a invertir</span><span>${fmt(st)}</span></div>`;
+  document.getElementById('shop-list').innerHTML=sh;
+}
+
+// TAB 4
+function renderProjInputs(){
+  let h='';
+  PRODS.forEach(prod=>{
+    h+=`<div class="calc-row">
+      <div><div style="font-size:13px;font-weight:600">${prod.e} ${prod.n}</div>
+      <div style="font-size:11px;color:#9A7A6A">${fmt(prod.price)} · costo ${fmt(portionCost(prod))}</div></div>
+      <span style="display:flex;align-items:center;gap:8px">
+        <input type="number" id="pj_${prod.id}" value="0" min="0" style="width:65px;text-align:center" onchange="calcProj()"/>
+        <span style="font-size:12px;color:#9A7A6A">/ sem</span>
+      </span>
+    </div>`;
+  });
+  document.getElementById('proj-inputs').innerHTML=h;
+}
+
+function calcProj(){
+  readP();
+  let wOrd=0,wRev=0,wCost=0;
+  let bk='';
+  PRODS.forEach(prod=>{
+    const q=parseInt(document.getElementById('pj_'+prod.id)?.value)||0;
+    if(!q) return;
+    const c=portionCost(prod);
+    wOrd+=q; wRev+=prod.price*q; wCost+=c*q;
+    const mRev=prod.price*q*4, mCost=c*q*4, mPrf=mRev-mCost;
+    bk+=`<div class="shop-item">
+      <span>${prod.e} ${prod.n} — ${q}/sem · ${q*4}/mes</span>
+      <div style="text-align:right">
+        <div style="font-weight:700">${fmt(mRev)}/mes</div>
+        <div style="font-size:11px;color:#4CAF50">Ganancia: ${fmt(mPrf)}/mes</div>
+      </div>
+    </div>`;
+  });
+  const mRev=wRev*4,mCost=wCost*4,mPrf=mRev-mCost;
+  document.getElementById('p-ord-w').textContent=wOrd;
+  document.getElementById('p-ord-m').textContent=wOrd*4;
+  document.getElementById('p-rev-w').textContent=fmt(wRev);
+  document.getElementById('p-rev-m').textContent=fmt(mRev);
+  document.getElementById('p-cos-m').textContent=fmt(mCost);
+  document.getElementById('p-prf-m').textContent=fmt(mPrf);
+  document.getElementById('p-pp').textContent='Por persona (÷3): '+fmt(mPrf/3);
+  document.getElementById('p-breakdown').innerHTML=bk||'<p style="color:#9A7A6A;font-size:13px">Ingresa datos arriba.</p>';
+}
+
+function show(name){
+  ['ing','cos','pro','pry'].forEach((t,i)=>{
+    document.querySelectorAll('.tab')[i].classList.toggle('active',t===name);
+    document.getElementById('tab-'+t).classList.toggle('active',t===name);
+  });
+  if(name==='cos') renderCosts();
+  if(name==='pro'){ renderCalcInputs(); calcProd(); }
+  if(name==='pry'){ renderProjInputs(); calcProj(); }
+}
+
+load(); renderIng(); renderCosts();
+</script>
+</body>
+</html>

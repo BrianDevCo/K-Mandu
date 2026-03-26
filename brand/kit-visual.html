@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-Mandu — Kit Visual Completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --negro:   #1A0A00;
+      --rosa:    #FF8FAB;
+      --crema:   #FFF8F5;
+      --melocoton: #FFCBA4;
+      --marron:  #C4956A;
+      --texto:   #9A7A6A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0E0500;
+      color: var(--crema);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      padding: 64px 60px 48px;
+      border-bottom: 1px solid rgba(255,143,171,0.15);
+    }
+    .page-header .overline {
+      font-size: 11px;
+      letter-spacing: 6px;
+      color: var(--rosa);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--crema);
+      letter-spacing: 1px;
+    }
+    .page-header p {
+      margin-top: 12px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--texto);
+    }
+
+    /* ── SECCIONES ── */
+    .section {
+      padding: 60px;
+      border-bottom: 1px solid rgba(255,143,171,0.08);
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: var(--rosa);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--crema);
+      margin-bottom: 32px;
+    }
+
+    /* ── LOGO ── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .logo-card {
+      border: 1px solid rgba(255,143,171,0.15);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-card.dark  { background: #1A0A00; }
+    .logo-card.light { background: #F4EFE4; }
+    .logo-card.pink  { background: #FF8FAB; }
+    .logo-card .card-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--texto);
+      text-transform: uppercase;
+    }
+    .logo-card.light .card-label { color: #9A7A6A; }
+    .logo-card.pink  .card-label { color: #1A0A00; }
+
+    /* ── PALETA ── */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 700px) { .palette-grid { grid-template-columns: repeat(2,1fr); } }
+    .color-swatch {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .color-block {
+      height: 80px;
+    }
+    .color-info {
+      background: rgba(255,255,255,0.03);
+      padding: 14px 16px;
+    }
+    .color-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--crema);
+      margin-bottom: 4px;
+    }
+    .color-hex {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--texto);
+    }
+
+    /* ── TIPOGRAFÍA ── */
+    .type-samples {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: start;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,143,171,0.08);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta .type-label  { font-size: 10px; letter-spacing: 4px; color: var(--rosa); text-transform: uppercase; margin-bottom: 4px; }
+    .type-meta .type-spec   { font-size: 11px; color: var(--texto); line-height: 1.7; }
+    .type-display { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: var(--crema); line-height: 1; }
+    .type-heading { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--crema); line-height: 1.2; }
+    .type-sub     { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 5px; color: var(--rosa); text-transform: uppercase; }
+    .type-body    { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400; color: #C4B5A5; line-height: 1.7; max-width: 560px; }
+
+    /* ── INSTAGRAM ── */
+    .instagram-mockup {
+      background: #1A0A00;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,143,171,0.15);
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .insta-header {
+      padding: 16px 20px 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255,143,171,0.1);
+    }
+    .insta-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--rosa);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .insta-info .insta-handle  { font-size: 14px; font-weight: 700; color: var(--crema); }
+    .insta-info .insta-tagline { font-size: 11px; color: var(--texto); margin-top: 2px; }
+    .insta-bio {
+      padding: 16px 20px;
+    }
+    .insta-bio p { font-size: 12px; color: #C4B5A5; line-height: 1.6; }
+    .insta-bio .insta-link { color: var(--rosa); font-size: 12px; }
+    .highlights-row {
+      padding: 16px 20px 20px;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+    }
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .highlight-circle {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,143,171,0.4);
+      overflow: hidden;
+    }
+    .highlight-label {
+      font-size: 10px;
+      color: var(--crema);
+      letter-spacing: 1px;
+    }
+
+    /* ── STICKER ── */
+    .sticker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── PREVIEW BANNER ── */
+    .banner-preview {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,143,171,0.15);
+    }
+
+    /* ── ARCHIVOS ── */
+    .files-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      background: rgba(255,143,171,0.04);
+      border: 1px solid rgba(255,143,171,0.1);
+      border-radius: 8px;
+    }
+    .file-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: rgba(255,143,171,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .file-name  { font-size: 13px; font-weight: 600; color: var(--crema); }
+    .file-desc  { font-size: 11px; color: var(--texto); margin-top: 2px; }
+    .file-badge {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--rosa);
+      background: rgba(255,143,171,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,143,171,0.1);
+    }
+    footer .brand { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--crema); }
+    footer .copy  { font-size: 11px; letter-spacing: 3px; color: var(--texto); }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <div class="page-header">
+    <div class="overline">Kit Visual Completo</div>
+    <h1>K-Mandu</h1>
+    <p>KOREAN BITES · CALI — Identidad Visual 2025</p>
+  </div>
+
+  <!-- ── 1. LOGO ── -->
+  <section class="section">
+    <div class="section-label">01 / Logo</div>
+    <h2 class="section-title">Versiones del Logo</h2>
+    <div class="logo-grid">
+      <div class="logo-card dark">
+        <img src="logo.svg" alt="K-Mandu logo sobre fondo oscuro" width="280">
+        <span class="card-label">Versión Principal · Fondo Oscuro</span>
+      </div>
+      <div class="logo-card light">
+        <img src="logo.svg" alt="K-Mandu logo sobre fondo claro" width="280">
+        <span class="card-label" style="color:#9A7A6A">Sobre Fondo Claro</span>
+      </div>
+      <div class="logo-card pink">
+        <img src="logo.svg" alt="K-Mandu logo sobre fondo rosa" width="280">
+        <span class="card-label" style="color:#1A0A00">Sobre Fondo Rosa</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. PALETA ── -->
+  <section class="section">
+    <div class="section-label">02 / Color</div>
+    <h2 class="section-title">Paleta de Colores</h2>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-block" style="background:#1A0A00"></div>
+        <div class="color-info">
+          <div class="color-name">Negro Mandu</div>
+          <div class="color-hex">#1A0A00</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#FF8FAB"></div>
+        <div class="color-info">
+          <div class="color-name">Rosa Kimchi</div>
+          <div class="color-hex">#FF8FAB</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#FFF8F5"></div>
+        <div class="color-info">
+          <div class="color-name">Crema Masa</div>
+          <div class="color-hex">#FFF8F5</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#FFCBA4"></div>
+        <div class="color-info">
+          <div class="color-name">Melocotón Suave</div>
+          <div class="color-hex">#FFCBA4</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#F4EFE4"></div>
+        <div class="color-info">
+          <div class="color-name">Beige Arroz</div>
+          <div class="color-hex">#F4EFE4</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#C4956A"></div>
+        <div class="color-info">
+          <div class="color-name">Canela Caliente</div>
+          <div class="color-hex">#C4956A</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#9A7A6A"></div>
+        <div class="color-info">
+          <div class="color-name">Gris Sésamo</div>
+          <div class="color-hex">#9A7A6A</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#C2B49A"></div>
+        <div class="color-info">
+          <div class="color-name">Arena Pleating</div>
+          <div class="color-hex">#C2B49A</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. TIPOGRAFÍA ── -->
+  <section class="section">
+    <div class="section-label">03 / Tipografía</div>
+    <h2 class="section-title">Sistema Tipográfico</h2>
+    <div class="type-samples">
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Display</div>
+          <div class="type-spec">Playfair Display<br>900 · 52px<br>Títulos principales</div>
+        </div>
+        <div class="type-display">K-Mandu</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Heading</div>
+          <div class="type-spec">Playfair Display<br>700 · 32px<br>Secciones</div>
+        </div>
+        <div class="type-heading">Korean Bites desde Cali</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Overline</div>
+          <div class="type-spec">Montserrat<br>600 · 13px<br>Etiquetas · 5px spacing</div>
+        </div>
+        <div class="type-sub">KOREAN BITES · CALI</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-label">Body</div>
+          <div class="type-spec">Montserrat<br>400 · 15px<br>Cuerpo de texto</div>
+        </div>
+        <div class="type-body">Mandu preparado a mano con los mejores ingredientes. Masa fresca, rellenos auténticos, sabores que no encontrarás en ningún otro lugar de Cali.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. BANNER ── -->
+  <section class="section">
+    <div class="section-label">04 / Instagram</div>
+    <h2 class="section-title">Banner / Cover</h2>
+    <div class="banner-preview">
+      <img src="instagram-banner.svg" alt="Banner K-Mandu" style="width:100%; display:block;">
+    </div>
+    <p style="margin-top:14px; font-size:12px; color:var(--texto); letter-spacing:2px;">
+      1080 × 566 px · Portada de página o publicación destacada
+    </p>
+  </section>
+
+  <!-- ── 5. HIGHLIGHTS ── -->
+  <section class="section">
+    <div class="section-label">05 / Instagram</div>
+    <h2 class="section-title">Foto de Perfil &amp; Highlights</h2>
+
+    <!-- Mockup Instagram -->
+    <div class="instagram-mockup">
+      <div class="insta-header">
+        <div class="insta-avatar">
+          <img src="instagram-profile.svg" alt="Foto perfil K-Mandu" width="64" height="64">
+        </div>
+        <div class="insta-info">
+          <div class="insta-handle">@kmandu.cali</div>
+          <div class="insta-tagline">Dumplings Coreanos · Cali</div>
+        </div>
+      </div>
+      <div class="insta-bio">
+        <p>🥟 Mandu · Boba Tea · Mochis<br>
+           Hechos en casa con recetas auténticas<br>
+           📍 Domicilios · Poblado Campestre<br>
+           🕓 4:00pm – 10:00pm · Lun a Dom</p>
+        <p style="margin-top:8px"><span class="insta-link">🛵 Pide por WhatsApp ↓</span></p>
+      </div>
+      <div class="highlights-row">
+        <div class="highlight-item">
+          <div class="highlight-circle">
+            <svg viewBox="0 120 240 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="240" fill="#1A0A00"/>
+              <path d="M72,178 Q78,156 120,150 Q162,156 168,178 Q165,194 120,200 Q75,194 72,178 Z" fill="#F4EFE4"/>
+              <path d="M72,178 Q76,168 82,173 Q86,164 92,170 Q97,161 104,168 Q109,160 116,167 Q121,159 128,166 Q134,160 140,167 Q145,161 151,168 Q156,164 160,170 Q164,168 168,178" stroke="#C2B49A" stroke-width="1.8" fill="none"/>
+              <ellipse cx="107" cy="184" rx="7" ry="7.5" fill="#1A0A00"/>
+              <circle cx="109" cy="181" r="2.5" fill="white"/>
+              <ellipse cx="133" cy="184" rx="7" ry="7.5" fill="#1A0A00"/>
+              <circle cx="135" cy="181" r="2.5" fill="white"/>
+            </svg>
+          </div>
+          <div class="highlight-label">MENÚ</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-circle">
+            <svg viewBox="0 120 240 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="240" fill="#2A0F14"/>
+              <circle cx="120" cy="170" r="40" fill="#FF8FAB" opacity="0.08" stroke="#FF8FAB" stroke-width="2"/>
+              <path d="M98,155 Q98,148 105,148 L135,148 Q142,148 142,155 L142,178 Q142,185 135,185 L122,185 L116,193 L116,185 L105,185 Q98,185 98,178 Z" fill="#FF8FAB" opacity="0.85"/>
+              <circle cx="112" cy="167" r="3.5" fill="#1A0A00"/>
+              <circle cx="120" cy="167" r="3.5" fill="#1A0A00"/>
+              <circle cx="128" cy="167" r="3.5" fill="#1A0A00"/>
+            </svg>
+          </div>
+          <div class="highlight-label">PEDIDOS</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-circle">
+            <svg viewBox="0 120 240 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="240" fill="#1A0A00"/>
+              <path d="M96,130 L100,208 Q100,215 120,215 Q140,215 140,208 L144,130 Z" fill="#FF8FAB" opacity="0.15" stroke="#FF8FAB" stroke-width="1.5"/>
+              <ellipse cx="120" cy="130" rx="24" ry="6" fill="#FF8FAB" opacity="0.5"/>
+              <line x1="124" y1="122" x2="124" y2="102" stroke="#FFF8F5" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="108" cy="204" r="5" fill="#FF8FAB" opacity="0.7"/>
+              <circle cx="120" cy="207" r="5" fill="#FF8FAB" opacity="0.7"/>
+              <circle cx="132" cy="204" r="5" fill="#FF8FAB" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="highlight-label">BOBA TEA</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-circle">
+            <svg viewBox="0 120 240 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="240" fill="#1A1A0A"/>
+              <ellipse cx="93" cy="178" rx="28" ry="25" fill="#F4EFE4"/>
+              <ellipse cx="120" cy="168" rx="28" ry="25" fill="#F4EFE4"/>
+              <ellipse cx="147" cy="178" rx="28" ry="25" fill="#E8D9C5"/>
+              <circle cx="85" cy="167" r="3" fill="#E8607A" opacity="0.6"/>
+              <circle cx="112" cy="157" r="3" fill="#F5A623" opacity="0.6"/>
+              <circle cx="139" cy="167" r="3" fill="#7B3F00" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="highlight-label">MOCHIS</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-circle">
+            <svg viewBox="0 120 240 120" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="240" fill="#2A0F14"/>
+              <path d="M120,205 C90,185 72,165 72,150 C72,136 83,128 95,130 C105,132 112,140 120,148 C128,140 135,132 145,130 C157,128 168,136 168,150 C168,165 150,185 120,205 Z" fill="#FF8FAB" opacity="0.75"/>
+              <text x="120" y="175" text-anchor="middle" font-family="Arial" font-size="30" font-weight="900" fill="#1A0A00" opacity="0.85">K</text>
+            </svg>
+          </div>
+          <div class="highlight-label">NOSOTROS</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px; font-size:12px; color:var(--texto); letter-spacing:2px;">
+      Foto de perfil: 500 × 500 px · Highlights: 240 × 240 px recortados a círculo
+    </p>
+
+    <!-- Preview tamaño real de la foto de perfil -->
+    <div style="margin-top:40px; display:flex; gap:32px; align-items:flex-end; flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <img src="instagram-profile.svg" width="200" height="200"
+             style="border-radius:50%; border:3px solid var(--rosa); display:block;">
+        <p style="margin-top:10px; font-size:11px; letter-spacing:2px; color:var(--texto);">200px (perfil)</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="instagram-profile.svg" width="100" height="100"
+             style="border-radius:50%; border:2px solid var(--rosa); display:block;">
+        <p style="margin-top:10px; font-size:11px; letter-spacing:2px; color:var(--texto);">100px (feed)</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="instagram-profile.svg" width="60" height="60"
+             style="border-radius:50%; border:2px solid var(--rosa); display:block;">
+        <p style="margin-top:10px; font-size:11px; letter-spacing:2px; color:var(--texto);">60px (comment)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. STICKER ── -->
+  <section class="section">
+    <div class="section-label">06 / Empaque</div>
+    <h2 class="section-title">Sticker de Empaque</h2>
+    <div class="sticker-grid">
+      <div style="padding:40px; background:#1A0A00; border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:12px; border:1px solid rgba(255,143,171,0.15);">
+        <img src="sticker-empaque.svg" alt="Sticker K-Mandu" style="width:100%; max-width:320px;">
+        <span style="font-size:10px; letter-spacing:4px; color:var(--texto);">SOBRE FONDO OSCURO</span>
+      </div>
+      <div style="padding:40px; background:#F4EFE4; border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+        <img src="sticker-empaque.svg" alt="Sticker K-Mandu sobre beige" style="width:100%; max-width:320px;">
+        <span style="font-size:10px; letter-spacing:4px; color:#9A7A6A;">SOBRE FONDO CREMA</span>
+      </div>
+    </div>
+    <p style="margin-top:20px; font-size:12px; color:var(--texto); line-height:1.8; letter-spacing:1px;">
+      El sticker se imprime en papel brillante o kraft. El campo de sabor/flavor
+      se puede escribir a mano con marcador de punta fina, o imprimir bajo demanda
+      para cada pedido.
+    </p>
+  </section>
+
+  <!-- ── 7. ARCHIVOS ── -->
+  <section class="section">
+    <div class="section-label">07 / Archivos</div>
+    <h2 class="section-title">Todos los Archivos del Proyecto</h2>
+    <div class="files-list">
+      <div class="file-item">
+        <div class="file-icon">🎨</div>
+        <div>
+          <div class="file-name">logo.svg</div>
+          <div class="file-desc">Logo principal vectorial — escalable a cualquier tamaño</div>
+        </div>
+        <span class="file-badge">SVG</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">👤</div>
+        <div>
+          <div class="file-name">instagram-profile.svg</div>
+          <div class="file-desc">Foto de perfil circular 500×500 px</div>
+        </div>
+        <span class="file-badge">SVG</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">🖼</div>
+        <div>
+          <div class="file-name">instagram-banner.svg</div>
+          <div class="file-desc">Banner / portada 1080×566 px</div>
+        </div>
+        <span class="file-badge">SVG</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">⭕</div>
+        <div>
+          <div class="file-name">instagram-highlights.svg</div>
+          <div class="file-desc">5 covers para highlights: Menú · Pedidos · Boba Tea · Mochis · Nosotros</div>
+        </div>
+        <span class="file-badge">SVG</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">🏷</div>
+        <div>
+          <div class="file-name">sticker-empaque.svg</div>
+          <div class="file-desc">Etiqueta de empaque imprimible 320×200 px</div>
+        </div>
+        <span class="file-badge">SVG</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">📋</div>
+        <div>
+          <div class="file-name">brand-book.html</div>
+          <div class="file-desc">Documento técnico completo de la marca (14 secciones)</div>
+        </div>
+        <span class="file-badge">HTML</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">🍽</div>
+        <div>
+          <div class="file-name">menu/menu.html</div>
+          <div class="file-desc">Menú digital mobile-first con botón de WhatsApp</div>
+        </div>
+        <span class="file-badge">HTML</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">💰</div>
+        <div>
+          <div class="file-name">costos/hoja-costos.html</div>
+          <div class="file-desc">Hoja de costos interactiva 4 pestañas — ingredientes · productos · producción · proyección</div>
+        </div>
+        <span class="file-badge">HTML</span>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">📱</div>
+        <div>
+          <div class="file-name">social-media/posts.md</div>
+          <div class="file-desc">Guión de 8 posts de lanzamiento con captions y hashtags (Abr 10–17)</div>
+        </div>
+        <span class="file-badge">MD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="brand">K-Mandu</div>
+    <div class="copy">KIT VISUAL · CALI 2025</div>
+  </footer>
+
+</body>
+</html>

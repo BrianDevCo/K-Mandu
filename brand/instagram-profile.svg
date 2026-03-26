@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="250" cy="250" r="250"/>
+    </clipPath>
+    <radialGradient id="bg-grad" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#3D1A0A"/>
+      <stop offset="100%" stop-color="#1A0A00"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF8FAB" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FF8FAB" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo circular -->
+  <circle cx="250" cy="250" r="250" fill="url(#bg-grad)"/>
+
+  <!-- Resplandor central -->
+  <circle cx="250" cy="250" r="200" fill="url(#glow)"/>
+
+  <!-- Borde decorativo interno -->
+  <circle cx="250" cy="250" r="234" fill="none" stroke="#FF8FAB" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.35"/>
+
+  <!-- Destellos de esquina -->
+  <text x="92"  y="115" font-size="13" fill="#FF8FAB" opacity="0.4" text-anchor="middle">✦</text>
+  <text x="408" y="115" font-size="13" fill="#FF8FAB" opacity="0.4" text-anchor="middle">✦</text>
+  <text x="92"  y="400" font-size="13" fill="#FF8FAB" opacity="0.4" text-anchor="middle">✦</text>
+  <text x="408" y="400" font-size="13" fill="#FF8FAB" opacity="0.4" text-anchor="middle">✦</text>
+
+  <!-- ===== DUMPLING KAWAII (centrado, grande) ===== -->
+  <!-- Sombra suave -->
+  <ellipse cx="253" cy="254" rx="106" ry="65" fill="#0A0200" opacity="0.3"/>
+
+  <!-- Cuerpo principal - media luna -->
+  <path d="M148,240 Q158,170 250,158 Q342,170 352,240 Q348,278 250,292 Q152,278 148,240 Z"
+        fill="#F4EFE4"/>
+
+  <!-- Brillo superior -->
+  <ellipse cx="215" cy="185" rx="38" ry="22" fill="white" opacity="0.22"/>
+
+  <!-- Pliegues del borde superior -->
+  <path d="M148,240
+           Q155,220 165,228
+           Q172,210 182,222
+           Q190,206 200,218
+           Q208,203 218,215
+           Q227,202 237,213
+           Q246,200 256,212
+           Q265,200 275,212
+           Q284,203 294,215
+           Q302,206 312,218
+           Q320,210 330,222
+           Q338,220 345,228
+           Q355,220 352,240"
+        stroke="#C2B49A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Ojos kawaii izquierdo -->
+  <ellipse cx="222" cy="246" rx="13" ry="14" fill="#1A0A00"/>
+  <circle  cx="227" cy="240" r="5" fill="white"/>
+  <circle  cx="229" cy="238" r="2" fill="white"/>
+
+  <!-- Ojos kawaii derecho -->
+  <ellipse cx="278" cy="246" rx="13" ry="14" fill="#1A0A00"/>
+  <circle  cx="283" cy="240" r="5" fill="white"/>
+  <circle  cx="285" cy="238" r="2" fill="white"/>
+
+  <!-- Blush mejillas -->
+  <ellipse cx="200" cy="265" rx="20" ry="11" fill="#FF8FAB" opacity="0.38"/>
+  <ellipse cx="300" cy="265" rx="20" ry="11" fill="#FF8FAB" opacity="0.38"/>
+
+  <!-- Sonrisa -->
+  <path d="M232 274 Q250 288 268 274" stroke="#1A0A00" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Vapor -->
+  <path d="M218 153 C214 138 220 128 216 113" stroke="#FF8FAB" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+  <path d="M250 148 C246 133 252 123 248 108" stroke="#FF8FAB" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+  <path d="M282 153 C278 138 284 128 280 113" stroke="#FF8FAB" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- ===== NOMBRE DE MARCA ===== -->
+  <text x="250" y="346"
+        text-anchor="middle"
+        font-family="'Arial Rounded MT Bold', 'Trebuchet MS', Arial, sans-serif"
+        font-size="62" font-weight="900"
+        fill="#FFF8F5" letter-spacing="5">K-Mandu</text>
+
+  <!-- Línea decorativa -->
+  <line x1="130" y1="362" x2="370" y2="362" stroke="#FF8FAB" stroke-width="1" opacity="0.4"/>
+
+  <!-- Tagline -->
+  <text x="250" y="382"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="16" fill="#FF8FAB" letter-spacing="6" opacity="0.85">KOREAN BITES · CALI</text>
+
+</svg>
